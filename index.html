@@ -52,7 +52,7 @@
             align-items: center;
             gap: 12px;
         }
-        
+
         .logo::after {
             content: "ЭКСПЕРТ";
             font-size: 0.75rem;
@@ -66,7 +66,7 @@
 
         .hotline { font-size: 0.9rem; font-weight: 600; color: var(--text-main); }
 
-        /* --- HERO --- */
+        /* --- HERO (LANDING) --- */
         .hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
@@ -79,32 +79,19 @@
         .hero h1 { font-size: 2.5rem; margin: 0 0 1rem; font-weight: 800; letter-spacing: -0.5px; }
         .hero p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto 2rem; }
 
-        .btn {
+        .btn-hero {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             padding: 1rem 2rem;
             border: none;
             border-radius: 8px;
             font-weight: 700;
             font-size: 1rem;
             cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .btn-hero {
-            background: white;
-            color: var(--primary);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transition: all 0.2s;
         }
         .btn-hero:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
-
-        .btn-primary { background: var(--primary); color: white; }
-        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
-        
-        .btn-outline { background: transparent; border: 1px solid #ccc; color: var(--text-sec); }
-        .btn-outline:hover { background: #f9fafb; border-color: #bbb; }
 
         /* --- FEATURES --- */
         .features-section {
@@ -126,7 +113,6 @@
             padding: 2rem;
             border-radius: var(--radius);
             box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
-            text-align: left;
             border-top: 4px solid transparent;
             transition: transform 0.3s ease;
         }
@@ -135,9 +121,8 @@
         .feature-card:nth-child(2) { border-top-color: var(--warning); }
         .feature-card:nth-child(3) { border-top-color: var(--success); }
         .feature-card:hover { transform: translateY(-5px); }
-
         .feature-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
-        .feature-title { font-weight: 800; font-size: 1.1rem; margin-bottom: 0.8rem; color: var(--text-main); }
+        .feature-title { font-weight: 800; font-size: 1.1rem; margin-bottom: 0.8rem; }
         .feature-text { font-size: 0.9rem; color: var(--text-sec); line-height: 1.5; }
 
         /* --- EXPERTISE --- */
@@ -147,32 +132,22 @@
             margin-top: 2rem;
             border-top: 1px solid var(--border);
         }
-
         .expertise-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
         }
-
-        .expertise-text h2 { font-size: 2rem; font-weight: 800; margin-top: 0; line-height: 1.2; }
-        .expertise-text p { color: var(--text-sec); font-size: 1.05rem; margin-bottom: 1.5rem; }
-        
         .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
         .stat-item { border-left: 4px solid var(--primary); padding-left: 1rem; }
         .stat-num { display: block; font-size: 2.5rem; font-weight: 900; color: var(--primary); line-height: 1; margin-bottom: 0.5rem; }
-        .stat-label { font-size: 0.9rem; font-weight: 600; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.5px; }
+        .stat-label { font-size: 0.9rem; font-weight: 600; text-transform: uppercase; }
 
-        /* --- APP UI --- */
+        /* --- APP UI (FORM) --- */
         #audit-app {
             max-width: 900px;
             margin: 2rem auto 4rem;
             background: var(--surface);
             border-radius: var(--radius);
             box-shadow: var(--shadow);
-            display: none;
+            display: none; /* Скрыто по умолчанию */
             position: relative;
             overflow: hidden;
             animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -206,11 +181,18 @@
         }
 
         .option-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        
+
         .option-card.selected {
             border-color: var(--primary);
             background-color: #F0F7FF;
             box-shadow: 0 0 0 2px rgba(0, 85, 165, 0.1);
+        }
+
+        /* Стиль для мультивыбора (галочка) */
+        .option-card.selected::after {
+            content: "✓"; position: absolute; top: 8px; right: 8px;
+            background: var(--primary); color: white; width: 20px; height: 20px;
+            border-radius: 50%; font-size: 12px; display: flex; align-items: center; justify-content: center;
         }
 
         .card-icon { font-size: 2rem; margin-bottom: 0.5rem; display: block; }
@@ -219,14 +201,18 @@
 
         .form-label { font-weight: 700; color: var(--text-main); display: block; margin-bottom: 0.8rem; font-size: 1rem; margin-top: 1.5rem; border-top: 1px solid #f0f0f0; padding-top: 1rem;}
         .form-label:first-child { margin-top: 0; border-top: none; padding-top: 0; }
+        .multi-hint { font-size: 0.8rem; font-weight: normal; color: var(--accent); margin-left: 8px; background: rgba(0, 151, 230, 0.1); padding: 2px 6px; border-radius: 4px;}
 
-        /* Inputs */
+        /* Inputs & Buttons */
         .input-group { margin-bottom: 1.5rem; }
         .input-group label { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-sec); }
-        .input-group input { 
-            width: 100%; padding: 0.9rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; outline: none; transition: border 0.2s; box-sizing: border-box; background: #fafafa;
-        }
-        .input-group input:focus { border-color: var(--accent); background: #fff; box-shadow: 0 0 0 3px rgba(0, 151, 230, 0.1); }
+        .input-group input { width: 100%; padding: 0.9rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; outline: none; box-sizing: border-box; background: #fafafa; }
+
+        .btn { padding: 1rem 2rem; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: var(--primary-dark); }
+        .btn-outline { background: transparent; border: 1px solid #ccc; color: var(--text-sec); }
+        .btn-outline:hover { background: #f9fafb; border-color: #bbb; }
 
         .nav-area { display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
 
@@ -240,46 +226,18 @@
         .result-item.danger { border-color: var(--danger); background: #FEF2F2; }
         .result-item.warning { border-color: var(--warning); background: #FFFBEB; }
         .result-item.safe { border-color: var(--success); background: #ECFDF5; }
-
         .badge { display: inline-block; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; padding: 4px 8px; border-radius: 4px; margin-bottom: 0.5rem; color: rgba(0,0,0,0.6); }
 
-        /* Call To Action Box Styles */
-        .cta-box {
-            background: linear-gradient(135deg, #E3F2FD 0%, #FFFFFF 100%);
-            padding: 2.5rem;
-            border-radius: 12px;
-            margin-top: 3rem;
-            text-align: center;
-            border: 1px solid #D1E9FF;
-            transition: all 0.3s ease;
-        }
-        
-        .cta-box.critical {
-            background: linear-gradient(135deg, #FEF2F2 0%, #FFFFFF 100%);
-            border-color: #FCA5A5;
-        }
-
+        .cta-box { background: linear-gradient(135deg, #E3F2FD 0%, #FFFFFF 100%); padding: 2.5rem; border-radius: 12px; margin-top: 3rem; text-align: center; border: 1px solid #D1E9FF; }
+        .cta-box.critical { background: linear-gradient(135deg, #FEF2F2 0%, #FFFFFF 100%); border-color: #FCA5A5; }
         .cta-title { margin-top: 0; color: var(--primary); font-size: 1.5rem; font-weight: 800; }
         .cta-box.critical .cta-title { color: var(--danger); }
 
-        /* Modal */
-        .modal-backdrop {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 30, 60, 0.4); backdrop-filter: blur(8px);
-            z-index: 1000; display: none; justify-content: center; align-items: center;
-        }
-        .modal-content {
-            background: var(--surface); padding: 2.5rem; border-radius: 16px;
-            width: 90%; max-width: 420px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            animation: modalPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        @keyframes modalPop { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-
         @media (max-width: 600px) {
             .hero h1 { font-size: 1.8rem; }
-            .step-content { padding: 1.5rem; }
             .features-section { margin-top: -3rem; }
             .expertise-container { grid-template-columns: 1fr; gap: 2rem; }
+            .step-content { padding: 1.5rem; }
         }
     </style>
 </head>
@@ -287,7 +245,7 @@
 
     <header>
         <div class="logo">СОГАЗ</div>
-        <div class="hotline">8 800 333 00 00</div>
+        <div class="hotline">8 800 333 08 88</div>
     </header>
 
     <div id="landing-view">
@@ -320,9 +278,9 @@
         <section class="expertise-section">
             <div class="expertise-container">
                 <div class="expertise-text">
-                    <h2>Фундаментальная надежность</h2>
-                    <p>Мы понимаем специфику складской логистики. Глубокая экспертиза андеррайтеров СОГАЗ позволяет нам предлагать индивидуальные тарифы.</p>
-                    <p>Доверьте защиту лидеру рынка.</p>
+                    <h2 style="font-size:2rem; font-weight:800; margin-top:0;">Фундаментальная надежность</h2>
+                    <p style="color:var(--text-sec); margin-bottom:1.5rem;">Мы понимаем специфику складской логистики. Глубокая экспертиза андеррайтеров СОГАЗ позволяет нам предлагать индивидуальные тарифы.</p>
+                    <p style="font-weight:600;">Доверьте защиту лидеру рынка.</p>
                 </div>
                 <div class="stats-grid">
                     <div class="stat-item"><span class="stat-num">№1</span><span class="stat-label">В корпоративном страховании</span></div>
@@ -334,7 +292,7 @@
 
     <div id="audit-app">
         <div class="progress-container"><div class="progress-bar" id="p-bar"></div></div>
-        
+
         <div class="step" id="step1">
             <div class="step-content">
                 <div class="step-header"><span class="step-tag">Шаг 1 из 6</span><h2 class="step-title">Данные об объекте</h2></div>
@@ -343,7 +301,7 @@
                     <div class="input-group"><label>Код ОКВЭД</label><input type="text" placeholder="52.10" oninput="data.okved = this.value"></div>
                 </div>
                 <div class="input-group"><label>Адрес объекта</label><input type="text" placeholder="г. Москва..." oninput="data.address = this.value"></div>
-                <div class="input-group"><label>Год ввода в эксплуатацию (Здания)</label><input type="number" placeholder="2010" oninput="data.buildYear = this.value"></div>
+                <div class="input-group"><label>Год ввода в эксплуатацию</label><input type="number" placeholder="2010" oninput="data.buildYear = this.value"></div>
                 <div class="nav-area"><button class="btn" style="visibility: hidden;"></button><button class="btn btn-primary" onclick="nextStep(2)">Далее</button></div>
             </div>
         </div>
@@ -351,31 +309,32 @@
         <div class="step" id="step2" style="display:none;">
             <div class="step-content">
                 <div class="step-header"><span class="step-tag">Шаг 2 из 6</span><h2 class="step-title">Конструктив здания</h2></div>
-                
+
                 <label class="form-label">Площадь</label>
                 <div class="options-grid">
-                    <div class="option-card" onclick="select(this, 'area', 'small')"><span class="card-icon">🏠</span><span class="card-title">< 1 500 м²</span></div>
-                    <div class="option-card" onclick="select(this, 'area', 'medium')"><span class="card-icon">🏭</span><span class="card-title">1.5 - 5 тыс. м²</span></div>
-                    <div class="option-card" onclick="select(this, 'area', 'large')"><span class="card-icon">🌆</span><span class="card-title">> 5 000 м²</span></div>
+                    <div class="option-card" onclick="select(this, 'area', 'small')"><span class="card-icon">⛺</span><span class="card-title">< 1 500 м²</span><span class="card-desc">Малый склад</span></div>
+                    <div class="option-card" onclick="select(this, 'area', 'medium')"><span class="card-icon">🏢</span><span class="card-title">1.5 - 5 тыс. м²</span><span class="card-desc">Средний склад</span></div>
+                    <div class="option-card" onclick="select(this, 'area', 'large')"><span class="card-icon">🏭</span><span class="card-title">> 5 000 м²</span><span class="card-desc">Крупный логопарк</span></div>
                 </div>
 
                 <label class="form-label">Год последнего кап. ремонта</label>
                 <div class="options-grid">
                     <div class="option-card" onclick="select(this, 'repair', 'recent')"><span class="card-icon">🔨</span><span class="card-title">< 10 лет</span><span class="card-desc">Регулярно</span></div>
-                    <div class="option-card" onclick="select(this, 'repair', 'old')"><span class="card-icon">🕸️</span><span class="card-title">> 30 лет / Нет</span><span class="card-desc">Давно не было</span></div>
+                    <div class="option-card" onclick="select(this, 'repair', 'old')"><span class="card-icon">🕸️</span><span class="card-title">> 25 лет / Нет</span><span class="card-desc">Давно не было</span></div>
                 </div>
 
                 <label class="form-label">Материалы конструкций</label>
                 <div class="options-grid">
                     <div class="option-card" onclick="select(this, 'material', 'concrete')"><span class="card-icon">🧱</span><span class="card-title">Ж/Б, Кирпич</span><span class="card-desc">Негорючие</span></div>
                     <div class="option-card" onclick="select(this, 'material', 'metal')"><span class="card-icon">🏗️</span><span class="card-title">Металл</span><span class="card-desc">Без защиты</span></div>
-                    <div class="option-card" onclick="select(this, 'material', 'wood')"><span class="card-icon">🪵</span><span class="card-title">Дерево / Панели</span><span class="card-desc">Горючее наполнение</span></div>
+                    <div class="option-card" onclick="select(this, 'material', 'wood')"><span class="card-icon">🪵</span><span class="card-title">Дерево / Панели</span><span class="card-desc">Сгораемые конструкции</span></div>
                 </div>
 
-                <label class="form-label">Деление на пожарные отсеки</label>
+                <label class="form-label">Объемно-планировочные решения</label>
                 <div class="options-grid">
-                    <div class="option-card" onclick="select(this, 'compartments', 'wall')"><span class="card-icon">🧱</span><span class="card-title">Стены</span><span class="card-desc">Противопожарные</span></div>
-                    <div class="option-card" onclick="select(this, 'compartments', 'none')"><span class="card-icon">🏟️</span><span class="card-title">Единый объем</span><span class="card-desc">Без перегородок</span></div>
+                    <div class="option-card" onclick="select(this, 'plan', 'many')"><span class="card-icon">🚪</span><span class="card-title">Много помещений</span><span class="card-desc">Кабинетная система</span></div>
+                    <div class="option-card" onclick="select(this, 'plan', 'sections')"><span class="card-icon">🧇</span><span class="card-title">Крупная нарезка</span><span class="card-desc">Несколько больших зон</span></div>
+                    <div class="option-card" onclick="select(this, 'plan', 'atrium')"><span class="card-icon">🏟️</span><span class="card-title">Единый объем</span><span class="card-desc">Атриум / Без стен</span></div>
                 </div>
 
                 <div class="nav-area"><button class="btn btn-outline" onclick="prevStep(1)">Назад</button><button class="btn btn-primary" onclick="nextStep(3)">Далее</button></div>
@@ -385,14 +344,14 @@
         <div class="step" id="step3" style="display:none;">
             <div class="step-content">
                 <div class="step-header"><span class="step-tag">Шаг 3 из 6</span><h2 class="step-title">Инженерные сети</h2></div>
-                
+
                 <label class="form-label">Состояние электропроводки</label>
                 <div class="options-grid">
                     <div class="option-card" onclick="select(this, 'wiring', 'new')"><span class="card-icon">⚡</span><span class="card-title">Новая</span></div>
                     <div class="option-card" onclick="select(this, 'wiring', 'old')"><span class="card-icon">🕸️</span><span class="card-title">Старая</span></div>
                 </div>
 
-                <label class="form-label">Замер сопротивления изоляции (последние 3 года)</label>
+                <label class="form-label">Замер сопротивления (последние 3 года)</label>
                 <div class="options-grid">
                     <div class="option-card" onclick="select(this, 'iso_check', 'yes')"><span class="card-icon">✅</span><span class="card-title">Проводился</span><span class="card-desc">Есть акты</span></div>
                     <div class="option-card" onclick="select(this, 'iso_check', 'no')"><span class="card-icon">❌</span><span class="card-title">Нет / Не знаю</span></div>
@@ -407,7 +366,7 @@
                 <label class="form-label">Газоснабжение на объекте</label>
                 <div class="options-grid">
                     <div class="option-card" onclick="select(this, 'gas', 'no')"><span class="card-icon">🚫</span><span class="card-title">Нет</span></div>
-                    <div class="option-card" onclick="select(this, 'gas', 'yes')"><span class="card-icon">🔥</span><span class="card-title">Есть</span><span class="card-desc">Котельная / Плиты</span></div>
+                    <div class="option-card" onclick="select(this, 'gas', 'yes')"><span class="card-icon">🔥</span><span class="card-title">Есть</span><span class="card-desc">Котельная</span></div>
                 </div>
 
                 <div class="nav-area"><button class="btn btn-outline" onclick="prevStep(2)">Назад</button><button class="btn btn-primary" onclick="nextStep(4)">Далее</button></div>
@@ -417,25 +376,27 @@
         <div class="step" id="step4" style="display:none;">
             <div class="step-content">
                 <div class="step-header"><span class="step-tag">Шаг 4 из 6</span><h2 class="step-title">Хранение и работы</h2></div>
-                
-                <label class="form-label">Тип ТМЦ</label>
+
+                <label class="form-label">Тип ТМЦ <span class="multi-hint">Можно выбрать несколько</span></label>
                 <div class="options-grid">
-                    <div class="option-card" onclick="select(this, 'pack', 'cardboard')"><span class="card-icon">📦</span><span class="card-title">Негорючие/Картон</span></div>
-                    <div class="option-card" onclick="select(this, 'pack', 'film')"><span class="card-icon">🧴</span><span class="card-title">Пластик/Резина</span></div>
-                    <div class="option-card" onclick="select(this, 'pack', 'aerosol')"><span class="card-icon">🧨</span><span class="card-title">Аэрозоли/ГСМ</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'tmc', 'low')"><span class="card-icon">📦</span><span class="card-title">Негорючие</span><span class="card-desc">В горючей упак. / Трудногорючие</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'tmc', 'medium')"><span class="card-icon">🛞</span><span class="card-title">Твердые горючие</span><span class="card-desc">Резина, РТИ, смолы</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'tmc', 'high')"><span class="card-icon">🧪</span><span class="card-title">Химия / ЛВЖ</span><span class="card-desc">Лаки, краски</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'tmc', 'critical')"><span class="card-icon">🧨</span><span class="card-title">Аэрозоли / Газы</span><span class="card-desc">Взрывоопасно</span></div>
                 </div>
 
-                <label class="form-label">Вид хранения</label>
+                <label class="form-label">Вид хранения <span class="multi-hint">Можно выбрать несколько</span></label>
                 <div class="options-grid">
-                    <div class="option-card" onclick="select(this, 'storage', 'rack')"><span class="card-icon">🏗️</span><span class="card-title">Стеллажи</span></div>
-                    <div class="option-card" onclick="select(this, 'storage', 'mezzanine')"><span class="card-icon">🏢</span><span class="card-title">Мезонин</span></div>
-                    <div class="option-card" onclick="select(this, 'storage', 'floor')"><span class="card-icon">🧱</span><span class="card-title">Напольное</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'storage_type', 'floor')"><span class="card-icon">🧱</span><span class="card-title">Напольное</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'storage_type', 'rack_low')"><span class="card-icon">🪜</span><span class="card-title">Стеллажи < 5.5м</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'storage_type', 'rack_high')"><span class="card-icon">🏗️</span><span class="card-title">Высотные > 5.5м</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'storage_type', 'mezzanine')"><span class="card-icon">🏢</span><span class="card-title">Мезонин</span></div>
                 </div>
 
                 <label class="form-label">Текущие ремонтные работы</label>
                 <div class="options-grid">
                     <div class="option-card" onclick="select(this, 'renovation', 'no')"><span class="card-icon">🛑</span><span class="card-title">Не проводятся</span></div>
-                    <div class="option-card" onclick="select(this, 'renovation', 'yes')"><span class="card-icon">👨‍🏭</span><span class="card-title">Планируются/Идут</span><span class="card-desc">Сварка, резка и т.д.</span></div>
+                    <div class="option-card" onclick="select(this, 'renovation', 'yes')"><span class="card-icon">👨🏭</span><span class="card-title">Планируются/Идут</span><span class="card-desc">Сварка, резка и т.д.</span></div>
                 </div>
 
                 <div class="nav-area"><button class="btn btn-outline" onclick="prevStep(3)">Назад</button><button class="btn btn-primary" onclick="nextStep(5)">Далее</button></div>
@@ -445,11 +406,18 @@
         <div class="step" id="step5" style="display:none;">
             <div class="step-content">
                 <div class="step-header"><span class="step-tag">Шаг 5 из 6</span><h2 class="step-title">Системы защиты</h2></div>
-                
-                <label class="form-label">Спринклерная система (АУПТ)</label>
+
+                <label class="form-label">Спринклерная система пожаротушения</label>
                 <div class="options-grid">
                     <div class="option-card" onclick="select(this, 'sprinkler', 'yes')"><span class="card-icon">🚿</span><span class="card-title">Есть</span><span class="card-desc">Потолочная</span></div>
                     <div class="option-card" onclick="select(this, 'sprinkler', 'no')"><span class="card-icon">🧯</span><span class="card-title">Нет</span></div>
+                </div>
+
+                <label class="form-label">Пожарная сигнализация (АПС) <span class="multi-hint">Можно несколько</span></label>
+                <div class="options-grid">
+                    <div class="option-card" onclick="toggleSelect(this, 'alarm', 'auto')"><span class="card-icon">🚨</span><span class="card-title">Автоматика</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'alarm', 'manual')"><span class="card-icon">🔘</span><span class="card-title">Ручная</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'alarm', 'none')"><span class="card-icon">🔕</span><span class="card-title">Отсутствует</span></div>
                 </div>
 
                 <label class="form-label">Межстеллажное тушение</label>
@@ -458,16 +426,16 @@
                     <div class="option-card" onclick="select(this, 'in_rack', 'no')"><span class="card-icon">❌</span><span class="card-title">Нет</span><span class="card-desc">Только потолочное</span></div>
                 </div>
 
-                <label class="form-label">Внутренний пожарный водопровод</label>
+                <label class="form-label">Наружный противопожарный водопровод</label>
                 <div class="options-grid">
-                    <div class="option-card" onclick="select(this, 'hydrants', 'full')"><span class="card-icon">🚒</span><span class="card-title">ПК + Насосная</span></div>
-                    <div class="option-card" onclick="select(this, 'hydrants', 'none')"><span class="card-icon">🚱</span><span class="card-title">Нет / Неисправен</span></div>
+                    <div class="option-card" onclick="select(this, 'ext_water', 'yes')"><span class="card-icon">💧</span><span class="card-title">Есть</span><span class="card-desc">Гидранты / Водоем</span></div>
+                    <div class="option-card" onclick="select(this, 'ext_water', 'no')"><span class="card-icon">🏜️</span><span class="card-title">Нет / Неисправен</span></div>
                 </div>
 
                 <label class="form-label">Противодымная вентиляция</label>
                 <div class="options-grid">
-                    <div class="option-card" onclick="select(this, 'smoke', 'auto')"><span class="card-icon">💨</span><span class="card-title">Автоматика</span><span class="card-desc">< 60 сек</span></div>
-                    <div class="option-card" onclick="select(this, 'smoke', 'manual')"><span class="card-icon">✋</span><span class="card-title">Ручная</span></div>
+                    <div class="option-card" onclick="select(this, 'smoke', 'auto')"><span class="card-icon">💨</span><span class="card-title">Автоматика</span></div>
+                    <div class="option-card" onclick="select(this, 'smoke', 'slow')"><span class="card-icon">🐢</span><span class="card-title">Включение > 5 мин</span></div>
                     <div class="option-card" onclick="select(this, 'smoke', 'none')"><span class="card-icon">🌫️</span><span class="card-title">Отсутствует</span></div>
                 </div>
 
@@ -477,13 +445,7 @@
 
         <div class="step" id="step6" style="display:none;">
             <div class="step-content">
-                <div class="step-header"><span class="step-tag">Шаг 6 из 6</span><h2 class="step-title">Охрана и Безопасность</h2></div>
-                
-                <label class="form-label">Пожарная сигнализация (АПС)</label>
-                <div class="options-grid">
-                    <div class="option-card" onclick="select(this, 'alarm', 'auto')"><span class="card-icon">🚨</span><span class="card-title">Есть</span></div>
-                    <div class="option-card" onclick="select(this, 'alarm', 'manual')"><span class="card-icon">🔕</span><span class="card-title">Нет</span></div>
-                </div>
+                <div class="step-header"><span class="step-tag">Шаг 6 из 6</span><h2 class="step-title">Безопасность и Статус</h2></div>
 
                 <label class="form-label">Расстояние до пожарной части</label>
                 <div class="options-grid">
@@ -511,42 +473,30 @@
             <div class="step-content">
                 <div style="text-align: center; margin-bottom: 2.5rem;">
                     <h2 class="step-title">Карта рисков</h2>
-                    <p style="color: var(--text-sec);">Результат андеррайтингового скоринга</p>
+                    <p style="color: var(--text-sec);">Результат инженерного скоринга</p>
                 </div>
                 <div id="report-content"></div>
-                
+
                 <div id="cta-block" class="cta-box">
                     <h3 id="cta-title" class="cta-title">Детальная консультация</h3>
                     <p id="cta-desc" style="color: var(--text-sec); margin-bottom: 1.5rem;">Для точного расчета тарифа и рекомендаций свяжитесь с нами.</p>
-                    <button class="btn btn-primary" onclick="openModal()">Оставить контакты</button>
+                    <button class="btn btn-primary" onclick="window.location.href='mailto:dkanaliev@bk.ru'">Оставить контакты</button>
                 </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="modal-backdrop" id="contactModal">
-        <div class="modal-content">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.5rem;">
-                <h3 style="margin:0; font-size:1.4rem;">Связь с экспертом</h3>
-                <span style="cursor:pointer; font-size:1.5rem; opacity:0.5;" onclick="closeModal()">×</span>
-            </div>
-            <div id="modal-form">
-                <div class="input-group"><label>Ваше имя</label><input type="text" id="user-name" placeholder="Иван Иванов"></div>
-                <div class="input-group"><label>Номер телефона</label><input type="tel" id="user-phone" placeholder="+7 (999) 000-00-00"></div>
-                <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="submitForm()">Отправить заявку</button>
-            </div>
-            <div id="modal-success" style="display:none; text-align: center; padding: 2rem 0;">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
-                <h3 style="margin-top:0;">Заявка сформирована!</h3>
-                <p style="color: var(--text-sec);">Мы открыли ваш почтовый клиент для отправки отчета эксперту.</p>
-                <button class="btn btn-outline" onclick="closeModal()">Закрыть</button>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="btn btn-outline" onclick="location.reload()">⟲ Вернуться на главную</button>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        let data = {};
-        let criticalCount = 0; // Счетчик критических рисков
+        let data = {
+            tmc: [],
+            storage_type: [],
+            alarm: []
+        };
+        let criticalCount = 0;
 
         function startApp() {
             document.getElementById('landing-view').style.display = 'none';
@@ -557,7 +507,7 @@
         function nextStep(n) {
             document.querySelectorAll('.step').forEach(el => el.style.display = 'none');
             document.getElementById('step' + n).style.display = 'block';
-            document.getElementById('p-bar').style.width = (n * 16.6) + '%'; 
+            document.getElementById('p-bar').style.width = (n * 16.6) + '%';
             window.scrollTo(0,0);
         }
 
@@ -569,95 +519,111 @@
             data[cat] = val;
         }
 
-        function openModal() { document.getElementById('contactModal').style.display = 'flex'; }
-        function closeModal() { 
-            document.getElementById('contactModal').style.display = 'none'; 
-            setTimeout(() => { document.getElementById('modal-form').style.display = 'block'; document.getElementById('modal-success').style.display = 'none'; }, 300);
-        }
-        
-        // --- ОТПРАВКА ФОРМЫ (MAILTO) ---
-        function submitForm() { 
-            const name = document.getElementById('user-name').value;
-            const phone = document.getElementById('user-phone').value;
-            
-            // Формируем тело письма
-            let body = `Заявка на страхование склада\n`;
-            body += `Имя: ${name}\nТелефон: ${phone}\n\n`;
-            body += `ДАННЫЕ АНКЕТЫ:\n`;
-            body += `ИНН: ${data.inn || '-'}\nОКВЭД: ${data.okved || '-'}\nАдрес: ${data.address || '-'}\nГод: ${data.buildYear || '-'}\n`;
-            
-            // Добавляем ответы (упрощенно)
-            for (const [key, value] of Object.entries(data)) {
-                if(['inn','okved','address','buildYear'].includes(key)) continue;
-                body += `${key}: ${value}\n`;
+        // Функция для множественного выбора (Toggle)
+        function toggleSelect(el, cat, val) {
+            if (!data[cat]) data[cat] = [];
+
+            // Если уже выбрано - убираем
+            if (data[cat].includes(val)) {
+                data[cat] = data[cat].filter(item => item !== val);
+                el.classList.remove('selected');
+            } else {
+                // Если не выбрано - добавляем
+                data[cat].push(val);
+                el.classList.add('selected');
             }
-
-            // Открываем почтовый клиент
-            window.location.href = `mailto:dkanaliev@bk.ru?subject=Заявка СОГАЗ Риски&body=${encodeURIComponent(body)}`;
-
-            // Показываем успех
-            document.getElementById('modal-form').style.display = 'none'; 
-            document.getElementById('modal-success').style.display = 'block'; 
         }
-        
-        window.onclick = function(e) { if (e.target == document.getElementById('contactModal')) closeModal(); }
 
         function showReport() {
             document.querySelectorAll('.step').forEach(el => el.style.display = 'none');
             document.getElementById('report').style.display = 'block';
             document.getElementById('p-bar').style.width = '100%';
-            
+
             const container = document.getElementById('report-content');
             let html = '';
             let delay = 0.1;
-            criticalCount = 0; // Сброс счетчика
+            criticalCount = 0;
 
             const createItem = (type, badge, title, text) => {
                 delay += 0.1;
-                if (type === 'danger') criticalCount++; // Считаем красные карточки
+                if (type === 'danger') criticalCount++;
                 return `<div class="result-item ${type}" style="animation-delay: ${delay}s"><span class="badge">${badge}</span><div style="font-weight:bold; font-size:1.1rem; margin-bottom:0.5rem;">${title}</div><div style="color:var(--text-sec); font-size:0.95rem;">${text}</div></div>`;
             };
 
-            // --- LOGIC ---
-            if (data.material === 'wood') html += createItem('danger', 'Конструктив', '🛑 Горючие материалы', 'Деревянные конструкции или панели с горючим утеплителем значительно повышают тариф или ведут к отказу в страховании.');
-            if (data.repair === 'old') html += createItem('warning', 'Износ', '⚠️ Старый фонд', 'Отсутствие капремонта более 30 лет увеличивает риски аварий сетей.');
-            if (data.compartments === 'none' && data.area === 'large') html += createItem('danger', 'Планировка', '🔥 Единый пожарный отсек', 'Большая площадь без противопожарных стен — риск тотального убытка при пожаре.');
-            
-            if (data.iso_check === 'no') html += createItem('danger', 'Электрика', '⚡ Нет проверки изоляции', 'Неисправность проводки — причина №1 пожаров. Требуется срочное проведение замеров.');
-            if (data.lightning === 'no') html += createItem('warning', 'Защита', '🌩️ Нет молниезащиты', 'Риск прямого попадания молнии и пожара.');
-            if (data.gas === 'yes') html += createItem('danger', 'Взрывоопасность', '💥 Газоснабжение', 'Наличие газа требует особого расширения покрытия (риск взрыва).');
+            // --- ЛОГИКА АНАЛИЗА ---
 
-            if (data.pack === 'aerosol') html += createItem('danger', 'ТМЦ', '🧨 Аэрозоли', 'Требуется изолированное помещение с легкосбрасываемыми конструкциями.');
-            if (data.renovation === 'yes') html += createItem('warning', 'Работы', '👨‍🏭 Огневые работы', 'Ремонт повышает риск. В полисе обязательна оговорка о проведении огневых работ.');
+            // Материалы
+            if (data.material === 'wood') html += createItem('danger', 'Конструктив', '🛑 Сгораемые конструкции', 'Деревянные конструкции или панели с горючим утеплителем могут привести к тотальному убытку.');
+            if (data.material === 'metal') html += createItem('warning', 'Конструктив', '⚠️ Металл без защиты', 'Быстрая потеря несущей способности при пожаре.');
 
-            if (data.sprinkler === 'no') html += createItem('warning', 'АУПТ', '🧯 Нет спринклеров', 'Для складов площадью >1000 м² отсутствие автоматического тушения критично.');
-            if (data.storage === 'mezzanine' && data.in_rack === 'no') html += createItem('danger', 'Мезонин', '🛑 Нет межстеллажного тушения', 'Потолочные спринклеры неэффективны для мезонинов. Высокий риск отказа в выплате.');
-            if (data.smoke === 'none') html += createItem('warning', 'Дымоудаление', '🌫️ Нет дымоудаления', 'Затрудняет эвакуацию и работу пожарных расчетов.');
-            if (data.hydrants === 'none') html += createItem('danger', 'Водопровод', '🚱 Нет воды', 'Невозможность начать тушение до приезда МЧС.');
+            // Износ
+            if (data.repair === 'old') html += createItem('warning', 'Износ', '⚠️ Старый фонд', 'Отсутствие капремонта более 25 лет увеличивает риски аварий сетей.');
 
-            if (data.mcn === 'yes') html += createItem('danger', 'Надзор', '⚠️ Предписания МЧС', 'Наличие неустраненных нарушений — стоп-фактор для принятия на страхование.');
-            if (data.distance === 'far') html += createItem('warning', 'Локация', '🐌 Удаленность ПЧ', 'Время прибытия > 10 минут увеличивает ожидаемый убыток (PML).');
+            // Электрика (ДОБАВЛЕНО)
+            if (data.wiring === 'old') html += createItem('warning', 'Электрика', '⚠️ Старая проводка', 'Неисправность проводки — причина №1 пожаров. Требуется срочное проведение испытаний.');
+
+            // ТМЦ (Мультивыбор - берем худшее)
+            if (data.tmc.includes('critical')) {
+                html += createItem('danger', 'ТМЦ', '🧨 Аэрозоли / Газы', 'Аэрозоли – требуются сетчатые ограждения, ГГ – легкосбрасываемые конструкции');
+            } else if (data.tmc.includes('high')) {
+                html += createItem('danger', 'ТМЦ', '🧪 ЛВЖ и Химия', 'Требуется изолированное помещение с легкосбрасываемыми конструкциями.Требуется автоматическая система пожаротушения с раствором пенообразователя.');
+            } else if (data.tmc.includes('medium')) {
+                html += createItem('warning', 'ТМЦ', '🛞 Горючие материалы', 'При наличии резины, каучука и смол рекомендуем автоматическое пожаротушение осуществлять водой со смачивателем или пеной низкой кратности.');
+            }
+
+            // Хранение (Мультивыбор - берем худшее)
+            if (data.storage_type.includes('mezzanine')) {
+                if (data.in_rack !== 'yes') {
+                    html += createItem('danger', 'Хранение', '🛑 Мезонин без тушения', 'Потолочные спринклеры неэффективны для тушения пожара внутри мезонинов.');
+                }
+            } else if (data.storage_type.includes('rack_high')) {
+                if (data.in_rack !== 'yes') {
+                    html += createItem('warning', 'Хранение', '🪜 Высотное хранение', 'Для стеллажей > 5.5м рекомендуется межстеллажное тушение.');
+                }
+            }
+
+            // Работы
+            if (data.renovation === 'yes') html += createItem('warning', 'Работы', '👨🏭 Огневые работы', 'Ремонт — частая причина пожаров. Нужен наряд-допуск.');
+
+            // Системы защиты
+            if (data.sprinkler === 'no') html += createItem('danger', 'АУПТ', '🧯 Нет оросителей', 'Для складов отсутствие автоматического пожаротушения критично.');
+
+            // Наружная вода
+            if (data.ext_water === 'no') html += createItem('danger', 'Водопровод', '🏜️ Нет наружной воды', 'Невозможность начать оперативное тушение здания пожарным подразделениям.');
+
+            // Дым
+            if (data.smoke === 'none') html += createItem('warning', 'Дымоудаление', '🌫️ Нет дымоудаления', 'Задержка > 5 мин снижает эффективность системы.');
+            if (data.smoke === 'slow') html += createItem('warning', 'Дымоудаление', '🐢 Медленный пуск', 'Задержка > 5 мин снижает эффективность системы.');
+
+            // Сигнализация (Мультивыбор)
+            if (data.alarm.includes('none') || (data.alarm.length === 0)) {
+                 html += createItem('danger', 'АПС', '🔕 Нет сигнализации', 'Слепая зона. Пожар будет обнаружен слишком поздно.');
+            } else if (!data.alarm.includes('auto') && data.alarm.includes('manual')) {
+                 html += createItem('warning', 'АПС', '⚠️ Только ручная', 'Зависит от человеческого фактора.');
+            }
+
+            // Надзор и локация
+            if (data.mcn === 'yes') html += createItem('danger', 'Надзор', '⚠️ Предписания МЧС', 'Наличие неустраненных нарушений — стоп-фактор.');
+            if (data.distance === 'far') html += createItem('warning', 'Локация', '🐌 Удаленность ПЧ', 'Время прибытия > 10 минут увеличивает ожидаемый убыток (PML).Следует предусмотреть объектовую пожарную охрану.');
 
             if (html === '') html = createItem('safe', 'Итог', '✅ Отличный уровень безопасности', 'Объект соответствует высоким стандартам безопасности.');
 
             container.innerHTML = html;
             window.scrollTo(0,0);
 
-            // --- DYNAMIC SELLING TEXT LOGIC ---
+            // Текст CTA
             const ctaBlock = document.getElementById('cta-block');
             const ctaTitle = document.getElementById('cta-title');
             const ctaDesc = document.getElementById('cta-desc');
 
             if (criticalCount > 0) {
-                // Сценарий: Есть критические риски
                 ctaBlock.classList.add('critical');
-                ctaTitle.innerText = "⚠️ Высокий риск: Требуется экспертное решение";
-                ctaDesc.innerHTML = `Мы обнаружили <strong>${criticalCount} критических факторов</strong>. Стандартный полис может не покрыть убытки при таком профиле риска. <br><br>Обратитесь к нам сейчас, чтобы мы разработали индивидуальную структуру покрытия и защитили вас от отказа в выплате.`;
+                ctaTitle.innerText = "⚠️ Обнаружены критические риски";
+                ctaDesc.innerHTML = `Мы нашли <strong>${criticalCount} стоп-факторов</strong>. <br>Стандартный полис может не сработать. Нужна индивидуальная структура покрытия.`;
             } else {
-                // Сценарий: Все хорошо
                 ctaBlock.classList.remove('critical');
-                ctaTitle.innerText = "💎 Закрепите вашу скидку до 30%";
-                ctaDesc.innerHTML = "Ваш склад в отличной форме! Не переплачивайте за страховку по рыночным тарифам. <br>Оставьте контакты, чтобы получить персональное предложение с учетом высокого рейтинга безопасности.";
+                ctaTitle.innerText = "💎 Оставьте контакты для индивидуального расчета";
+                ctaDesc.innerHTML = "Ваш склад имеет высокий рейтинг безопасности. Свяжитесь с нами для получения спецпредложения.";
             }
         }
     </script>

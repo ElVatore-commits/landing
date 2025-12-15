@@ -226,7 +226,15 @@
         .btn-outline { background: transparent; border: 1px solid #ccc; color: var(--text-sec); }
         .btn-outline:hover { background: #f9fafb; border-color: #bbb; }
 
+        /* Navigation Areas */
         .nav-area { display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+        
+        .nav-area-top { 
+            display: flex; justify-content: space-between; 
+            margin-bottom: 2rem; padding-bottom: 1rem; 
+            border-bottom: 1px solid #f0f0f0; 
+        }
+        .nav-area-top .btn { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
 
         /* Results */
         .result-item {
@@ -250,6 +258,7 @@
             .features-section { margin-top: -3rem; }
             .expertise-container { grid-template-columns: 1fr; gap: 2rem; }
             .step-content { padding: 1.5rem; }
+            .nav-area-top { display: none; }
         }
     </style>
 </head>
@@ -307,6 +316,7 @@
 
         <div class="step" id="step1">
             <div class="step-content">
+                <div class="nav-area-top"><button class="btn" style="visibility:hidden"></button><button class="btn btn-primary" onclick="nextStep(2)">Далее →</button></div>
                 <div class="step-header"><span class="step-tag">Шаг 1 из 6</span><h2 class="step-title">Данные об объекте</h2></div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                     <div class="input-group"><label>ИНН Организации</label><input type="number" placeholder="7700000000" oninput="data.inn = this.value"></div>
@@ -320,6 +330,7 @@
 
         <div class="step" id="step2" style="display:none;">
             <div class="step-content">
+                <div class="nav-area-top"><button class="btn btn-outline" onclick="prevStep(1)">← Назад</button><button class="btn btn-primary" onclick="nextStep(3)">Далее →</button></div>
                 <div class="step-header"><span class="step-tag">Шаг 2 из 6</span><h2 class="step-title">Конструктив здания</h2></div>
 
                 <label class="form-label">Площадь</label>
@@ -356,6 +367,7 @@
 
         <div class="step" id="step3" style="display:none;">
             <div class="step-content">
+                <div class="nav-area-top"><button class="btn btn-outline" onclick="prevStep(2)">← Назад</button><button class="btn btn-primary" onclick="nextStep(4)">Далее →</button></div>
                 <div class="step-header"><span class="step-tag">Шаг 3 из 6</span><h2 class="step-title">Инженерные сети</h2></div>
 
                 <label class="form-label">Состояние электропроводки</label>
@@ -388,6 +400,7 @@
 
         <div class="step" id="step4" style="display:none;">
             <div class="step-content">
+                <div class="nav-area-top"><button class="btn btn-outline" onclick="prevStep(3)">← Назад</button><button class="btn btn-primary" onclick="nextStep(5)">Далее →</button></div>
                 <div class="step-header"><span class="step-tag">Шаг 4 из 6</span><h2 class="step-title">Хранение и работы</h2></div>
 
                 <label class="form-label">Тип ТМЦ <span class="multi-hint">Можно выбрать несколько</span></label>
@@ -407,7 +420,7 @@
                     <div class="option-card" onclick="toggleSelect(this, 'storage_type', 'mezzanine')"><span class="card-icon">&#128209;</span><span class="card-title">Мезонин</span></div>
                 </div>
 
-                <label class="form-label">Текущие ремонтные работы</label>
+                <label class="form-label">Строительно-монтажные работы</label>
                 <div class="options-grid">
                     <div class="option-card" onclick="select(this, 'renovation', 'no')"><span class="card-icon">&#128721;</span><span class="card-title">Не проводятся</span></div>
                     <div class="option-card" onclick="select(this, 'renovation', 'yes')"><span class="card-icon">&#128119;</span><span class="card-title">Планируются/Идут</span><span class="card-desc">Сварка, резка и т.д.</span></div>
@@ -419,9 +432,10 @@
 
         <div class="step" id="step5" style="display:none;">
             <div class="step-content">
+                <div class="nav-area-top"><button class="btn btn-outline" onclick="prevStep(4)">← Назад</button><button class="btn btn-primary" onclick="nextStep(6)">Далее →</button></div>
                 <div class="step-header"><span class="step-tag">Шаг 5 из 6</span><h2 class="step-title">Системы защиты</h2></div>
 
-                <label class="form-label">Спринклерная система пожаротушения</label>
+                <label class="form-label">Автоматическая система пожаротушения</label>
                 <div class="options-grid">
                     <div class="option-card" onclick="select(this, 'sprinkler', 'yes')"><span class="card-icon">&#128703;</span><span class="card-title">Есть</span><span class="card-desc">Потолочная</span></div>
                     <div class="option-card" onclick="select(this, 'sprinkler', 'no')"><span class="card-icon">&#129529;</span><span class="card-title">Нет</span></div>
@@ -452,7 +466,8 @@
 
         <div class="step" id="step6" style="display:none;">
             <div class="step-content">
-                <div class="step-header"><span class="step-tag">Шаг 6 из 6</span><h2 class="step-title">Безопасность и Статус</h2></div>
+                <div class="nav-area-top"><button class="btn btn-outline" onclick="prevStep(5)">← Назад</button><button class="btn btn-primary" onclick="showReport()">Получить отчет</button></div>
+                <div class="step-header"><span class="step-tag">Шаг 6 из 6</span><h2 class="step-title">Безопасность и Режим</h2></div>
 
                 <label class="form-label">Расстояние до пожарной части</label>
                 <div class="options-grid">
@@ -466,10 +481,19 @@
                     <div class="option-card" onclick="select(this, 'mcn', 'yes')"><span class="card-icon">&#9888;</span><span class="card-title">Есть</span><span class="card-desc">Действующие нарушения</span></div>
                 </div>
 
-                <label class="form-label">Физическая охрана</label>
+                <label class="form-label">Охрана объекта <span class="multi-hint">Можно несколько</span></label>
                 <div class="options-grid">
-                    <div class="option-card" onclick="select(this, 'guard', 'pro')"><span class="card-icon">&#128110;</span><span class="card-title">ЧОП + Обходы</span></div>
-                    <div class="option-card" onclick="select(this, 'guard', 'camera')"><span class="card-icon">&#128249;</span><span class="card-title">Только камеры</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'guard', 'none')"><span class="card-icon">&#10060;</span><span class="card-title">Отсутствует</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'guard', 'camera')"><span class="card-icon">&#128249;</span><span class="card-title">Камеры</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'guard', 'chop')"><span class="card-icon">&#128110;</span><span class="card-title">ЧОП</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'guard', 'button')"><span class="card-icon">&#128680;</span><span class="card-title">Кнопка ГБР</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'guard', 'fence')"><span class="card-icon">&#128679;</span><span class="card-title">Огороженная территория</span></div>
+                </div>
+
+                <label class="form-label">Режим <span class="multi-hint">Можно несколько</span></label>
+                <div class="options-grid">
+                    <div class="option-card" onclick="toggleSelect(this, 'regime', 'free')"><span class="card-icon">&#128694;</span><span class="card-title">Свободный доступ</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'regime', 'pass')"><span class="card-icon">&#127381;</span><span class="card-title">Пропускная система</span></div>
                 </div>
 
                 <div class="nav-area"><button class="btn btn-outline" onclick="prevStep(5)">Назад</button><button class="btn btn-primary" onclick="showReport()">Получить отчет</button></div>
@@ -487,7 +511,7 @@
                 <div id="cta-block" class="cta-box">
                     <h3 id="cta-title" class="cta-title">Детальная консультация</h3>
                     <p id="cta-desc" style="color: var(--text-sec); margin-bottom: 1.5rem;">Для точного расчета тарифа и рекомендаций свяжитесь с нами.</p>
-                    <button class="btn btn-primary" onclick="window.location.href='mailto:dkanaliev@bk.ru'">Оставить контакты</button>
+                    <button class="btn btn-primary" onclick="sendEmail()">Оставить контакты</button>
                 </div>
 
                 <div style="text-align: center; margin-top: 2rem;">
@@ -502,9 +526,38 @@
             tmc: [],
             storage_type: [],
             alarm: [],
-            plan: []
+            plan: [],
+            guard: [],
+            regime: []
         };
         let criticalCount = 0;
+
+        // Translation Map for Email
+        const translations = {
+            // General
+            small: "< 1500 м²", medium: "1.5 - 5 тыс. м²", large: "> 5000 м²",
+            recent: "< 10 лет", periodic: "10 - 25 лет", old: "> 25 лет / Нет",
+            concrete: "Ж/Б, Кирпич", metal: "Металл", wood: "Дерево / Панели",
+            many: "Много помещений", sections: "Крупная нарезка", atrium: "Единый объем",
+            
+            // Engineering
+            new: "Новая (< 30 лет)", old: "Старая (> 30 лет)",
+            yes: "Есть/Да", no: "Нет/Нет",
+            
+            // Storage
+            low: "Негорючие", medium: "Твердые горючие", high: "Химия / ЛВЖ / ГЖ", critical: "Аэрозоли / Газы",
+            floor: "Напольное", rack_low: "Стеллажи < 5.5м", rack_mid: "Высотные 5.5-12.5м", rack_high: "Стеллажи > 12.5м", mezzanine: "Мезонин",
+            
+            // Fire Systems
+            auto: "Автоматика", manual: "Ручная", none: "Отсутствует",
+            
+            // Security
+            camera: "Камеры", chop: "ЧОП", button: "Кнопка ГБР", fence: "Огороженная территория",
+            near: "< 5 км", far: "> 5 км",
+            
+            // Regime
+            free: "Свободный доступ", pass: "Пропускная система"
+        };
 
         function startApp() {
             document.getElementById('landing-view').style.display = 'none';
@@ -527,19 +580,82 @@
             data[cat] = val;
         }
 
-        // Функция для множественного выбора (Toggle)
         function toggleSelect(el, cat, val) {
             if (!data[cat]) data[cat] = [];
 
-            // Если уже выбрано - убираем
+            // Special logic for Alarm and Guard (Exclusive "None")
+            if (cat === 'alarm' || cat === 'guard') {
+                const parent = el.parentElement;
+                if (val === 'none') {
+                    data[cat] = ['none']; 
+                    parent.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+                    el.classList.add('selected');
+                    return;
+                } else {
+                    if (data[cat].includes('none')) {
+                        data[cat] = data[cat].filter(i => i !== 'none');
+                        parent.querySelectorAll('.option-card').forEach(c => {
+                            if(c.getAttribute('onclick').includes("'none'")) c.classList.remove('selected');
+                        });
+                    }
+                }
+            }
+
             if (data[cat].includes(val)) {
                 data[cat] = data[cat].filter(item => item !== val);
                 el.classList.remove('selected');
             } else {
-                // Если не выбрано - добавляем
                 data[cat].push(val);
                 el.classList.add('selected');
             }
+        }
+
+        function sendEmail() {
+            const getVal = (key) => {
+                if (Array.isArray(data[key])) {
+                    return data[key].map(k => translations[k] || k).join(', ');
+                }
+                return translations[data[key]] || data[key] || "Не указано";
+            };
+
+            const body = `
+Оценка рисков (СОГАЗ Эксперт)
+---------------------------
+ОБЪЕКТ:
+ИНН: ${data.inn || '-'}
+ОКВЭД: ${data.okved || '-'}
+Адрес: ${data.address || '-'}
+Год постройки: ${data.buildYear || '-'}
+Площадь: ${getVal('area')}
+Ремонт: ${getVal('repair')}
+Материалы: ${getVal('material')}
+Планировка: ${getVal('plan')}
+
+ИНЖЕНЕРИЯ:
+Электрика: ${getVal('wiring')}
+Замер сопротивления: ${getVal('iso_check')}
+Молниезащита: ${getVal('lightning')}
+Газ: ${getVal('gas')}
+
+ХРАНЕНИЕ:
+ТМЦ: ${getVal('tmc')}
+Вид хранения: ${getVal('storage_type')}
+СМР: ${getVal('renovation')}
+
+СИСТЕМЫ ЗАЩИТЫ:
+АУПТ: ${getVal('sprinkler')}
+АПС: ${getVal('alarm')}
+Межстеллажное тушение: ${getVal('in_rack')}
+Наружный водопровод: ${getVal('ext_water')}
+
+БЕЗОПАСНОСТЬ:
+До ПЧ: ${getVal('distance')}
+Предписания МЧС: ${getVal('mcn')}
+Охрана: ${getVal('guard')}
+Режим: ${getVal('regime')}
+            `;
+
+            window.location.href = `mailto:LegalEntityEstate@sogaz.ru?subject=Результаты самоосмотра&body=${encodeURIComponent(body)}`;
         }
 
         function showReport() {
@@ -558,79 +674,63 @@
                 return `<div class="result-item ${type}" style="animation-delay: ${delay}s"><span class="badge">${badge}</span><div style="font-weight:bold; font-size:1.1rem; margin-bottom:0.5rem;">${title}</div><div style="color:var(--text-sec); font-size:0.95rem;">${text}</div></div>`;
             };
 
-            // --- ЛОГИКА АНАЛИЗА ---
+            // --- ANALYSIS LOGIC ---
 
-            // Материалы
-            if (data.material === 'wood') html += createItem('danger', 'Конструктив', '🛑 Сгораемые конструкции', 'Деревянные конструкции или панели с горючим утеплителем могут привести к тотальному убытку (повышенные риски пожаров с полной гибелью имущества).');
+            if (data.material === 'wood') html += createItem('danger', 'Конструктив', '🛑 Сгораемые конструкции', 'Деревянные конструкции или панели с горючим утеплителем могут привести к тотальному убытку.');
             if (data.material === 'metal') html += createItem('warning', 'Конструктив', '⚠️ Металл без защиты', 'Быстрая потеря несущей способности при пожаре.');
 
-            // Износ
-            if (data.repair === 'old') html += createItem('warning', 'Износ', '⚠️ Старый фонд', 'Отсутствие капремонта более 25 лет увеличивает риски аварий сетей (риск залива имущества в результате аварий водопроводных, канализационных систем).');
+            if (data.repair === 'old') html += createItem('warning', 'Износ', '⚠️ Старый фонд', 'Отсутствие капремонта более 25 лет увеличивает риски аварий сетей.');
 
-            // Электрика
-            if (data.wiring === 'old') html += createItem('warning', 'Электрика', '⚠️ Старая проводка', 'Старая электропроводка может привести к пожару, авариям оборудования.');
+            if (data.wiring === 'old') html += createItem('warning', 'Электрика', '⚠️ Старая проводка', 'Может привести к пожару, авариям оборудования.');
             if (data.iso_check === 'no') html += createItem('warning', 'Электрика', '⚠️ Нет замеров', 'Неисправность проводки — причина №1 пожаров. Требуется срочное проведение испытаний.');
 
-            // Молниезащита
-            if (data.lightning === 'no') html += createItem('warning', 'Защита', '⚡ Нет молниезащиты', 'Молния может вызвать перепады напряжения и пожар. Молниезащита обеспечивает безопасный путь для разряда.');
+            if (data.lightning === 'no') html += createItem('warning', 'Защита', '⚡ Нет молниезащиты', 'Молния может вызвать перепады напряжения и пожар. Специальные устройства отводят молнию в землю по безопасному пути.');
 
-            // ТМЦ (Мультивыбор)
             if (data.tmc.includes('critical')) {
-                html += createItem('danger', 'ТМЦ', '🧨 Аэрозоли / Газы', 'Аэрозоли – требуются сетчатые ограждения, ГГ – легкосбрасываемые конструкции');
+                html += createItem('danger', 'ТМЦ', '🧨 Аэрозоли / Горючие Газы', 'Требуются защитные ограждения для баллонов, Горючие газы – легкосбрасываемые конструкции.');
             }
             if (data.tmc.includes('high')) {
-                html += createItem('danger', 'ТМЦ', '🧪 Химия / ЛВЖ / ГЖ', 'Требуется изолированное помещение с легкосбрасываемыми конструкциями. Требуется автоматическая система пожаротушения с раствором пенообразователя.');
+                html += createItem('danger', 'ТМЦ', '🧪 ЛКМ / ЛВЖ / ГЖ', 'Требуется автоматическая система пожаротушения с раствором пенообразователя.');
             }
             if (data.tmc.includes('medium')) {
                 html += createItem('warning', 'ТМЦ', '🛞 Твердые горючие', 'При наличии резины, каучука и смол рекомендуем автоматическое пожаротушение осуществлять водой со смачивателем или пеной низкой кратности.');
             }
 
-            // Хранение (Мультивыбор - берем худшее)
-            // rack_low (<5.5) и floor - нет рекомендаций
             if (data.storage_type.includes('rack_mid')) {
-                // Высотные 5.5-12.5 (потолок <14)
                  html += createItem('danger', 'Хранение', '🛑 Высотное хранение', 'На потолке должны быть быстродействующие спринклерные оросители ESFR-25.');
             }
             if (data.storage_type.includes('rack_high')) {
-                 // >12.5 или потолок >14
                  html += createItem('danger', 'Хранение', '🛑 Сверхвысокое хранение', 'Должно быть межстеллажное пожаротушение.');
             }
             if (data.storage_type.includes('mezzanine')) {
-                 html += createItem('danger', 'Хранение', '🛑 Мезонин', 'Должно быть межстеллажное пожаротушение.');
+                 html += createItem('danger', 'Хранение', '🛑 Мезонин', 'Внутри ярусов мезонина должна быть система автоматического пожаротушения.');
             }
-            // Если выбран rack_high или mezzanine и нет межстеллажки (из пункта ниже) - дублируем инфо о важности
+            
             if ((data.storage_type.includes('rack_high') || data.storage_type.includes('mezzanine')) && data.in_rack !== 'yes') {
                  html += createItem('danger', 'АУПТ', '❌ Нет межстеллажного тушения', 'При высоте складирования выше 12,5 м и/или высоте помещения более 14 м требуется межстеллажная система пожаротушения.');
             }
 
+            if (data.renovation === 'yes') html += createItem('warning', 'Работы', '👨🏭 СМР на объекте', 'Строительно-монтажные работы — частая причина пожаров.');
 
-            // Работы
-            if (data.renovation === 'yes') html += createItem('warning', 'Работы', '👨🏭 Огневые работы', 'Ремонт — частая причина пожаров.');
+            if (data.sprinkler === 'no') html += createItem('danger', 'АУПТ', '🧯 Нет оросителей', 'При возникновении возгорания внутри стеллажей, система автоматического пожаротушения обеспечивает быструю локализацию и эффективное тушение пожара.');
 
-            // Системы защиты (Спринклер)
-            if (data.sprinkler === 'no') html += createItem('danger', 'АУПТ', '🧯 Нет оросителей', 'Отсутствие автоматического пожаротушения критично.');
-
-            // Наружная вода
             if (data.ext_water === 'no') html += createItem('danger', 'Водопровод', '🏜️ Нет наружной воды', 'Нет воды / Нет гарантий оперативного тушения.');
 
-
-            // Сигнализация (Мультивыбор)
             if (data.alarm.includes('none') || (data.alarm.length === 0)) {
-                 html += createItem('danger', 'АПС', '🔕 Нет сигнализации', 'Слепая зона. Пожар будет обнаружен слишком поздно риск ущерба значительно вырастает.');
-            } else if (!data.alarm.includes('auto') && data.alarm.includes('manual')) {
-                 html += createItem('warning', 'АПС', '⚠️ Только ручная', 'Зависит от человеческого фактора.');
+                 html += createItem('danger', 'АПС', '🔕 Нет сигнализации', 'Слепая зона. Пожар будет обнаружен слишком поздно.');
+            } else if (data.alarm.includes('manual') && !data.alarm.includes('auto')) {
+                 html += createItem('warning', 'АПС', '⚠️ Только ручная', 'Несвоевременное обнаружение пожара.');
             }
 
-            // Надзор и локация
-            if (data.mcn === 'yes') html += createItem('danger', 'Надзор', '⚠️ Предписания МЧС', 'Устранение рекомендаций крайне важно.');
-            if (data.distance === 'far') html += createItem('warning', 'Локация', '🐌 Удаленность ПЧ', 'Время прибытия > 10 минут увеличивает ожидаемый убыток.Следует предусмотреть объектовую пожарную охрану.');
+            if (data.mcn === 'yes') html += createItem('warning', 'Надзор', '⚠️ Предписания МЧС', 'Наличие предписаний МЧС свидетельствует о нарушении требований пожарной безопасности на объекте.');
+            
+            if (data.distance === 'far') html += createItem('warning', 'Локация', '🐌 Удаленность ПЧ', 'Время прибытия > 10 минут увеличивает риск быстрого распространения возгорания. Следует предусмотреть объектовую пожарную охрану.');
 
             if (html === '') html = createItem('safe', 'Итог', '✅ Отличный уровень безопасности', 'Объект соответствует высоким стандартам безопасности.');
 
             container.innerHTML = html;
             window.scrollTo(0,0);
 
-            // Текст CTA
             const ctaBlock = document.getElementById('cta-block');
             const ctaTitle = document.getElementById('cta-title');
             const ctaDesc = document.getElementById('cta-desc');

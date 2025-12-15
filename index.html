@@ -121,7 +121,14 @@
         .feature-card:nth-child(2) { border-top-color: var(--warning); }
         .feature-card:nth-child(3) { border-top-color: var(--success); }
         .feature-card:hover { transform: translateY(-5px); }
-        .feature-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+        
+        .feature-icon { 
+            font-size: 2rem; 
+            margin-bottom: 1rem; 
+            display: block;
+            font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+        }
+        
         .feature-title { font-weight: 800; font-size: 1.1rem; margin-bottom: 0.8rem; }
         .feature-text { font-size: 0.9rem; color: var(--text-sec); line-height: 1.5; }
 
@@ -147,7 +154,7 @@
             background: var(--surface);
             border-radius: var(--radius);
             box-shadow: var(--shadow);
-            display: none; /* Скрыто по умолчанию */
+            display: none;
             position: relative;
             overflow: hidden;
             animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -188,14 +195,19 @@
             box-shadow: 0 0 0 2px rgba(0, 85, 165, 0.1);
         }
 
-        /* Стиль для мультивыбора (галочка) */
         .option-card.selected::after {
             content: "✓"; position: absolute; top: 8px; right: 8px;
             background: var(--primary); color: white; width: 20px; height: 20px;
             border-radius: 50%; font-size: 12px; display: flex; align-items: center; justify-content: center;
         }
 
-        .card-icon { font-size: 2rem; margin-bottom: 0.5rem; display: block; }
+        .card-icon { 
+            font-size: 2rem; 
+            margin-bottom: 0.5rem; 
+            display: block;
+            font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+        }
+        
         .card-title { font-weight: 600; font-size: 0.95rem; color: var(--text-main); display: block; margin-bottom: 0.2rem; line-height: 1.3; }
         .card-desc { font-size: 0.8rem; color: var(--text-sec); }
 
@@ -258,17 +270,17 @@
         <section class="features-section">
             <div class="features-grid">
                 <div class="feature-card">
-                    <span class="feature-icon">⚡</span>
+                    <span class="feature-icon">&#9889;</span>
                     <div class="feature-title">Быстрый селф-скрининг</div>
                     <div class="feature-text">Оцените состояние бизнеса самостоятельно. Без сложных анкет и выезда инспектора.</div>
                 </div>
                 <div class="feature-card">
-                    <span class="feature-icon">📊</span>
+                    <span class="feature-icon">&#128202;</span>
                     <div class="feature-title">Профессиональная оценка</div>
                     <div class="feature-text">Алгоритм присвоит бизнесу <strong>рейтинг безопасности</strong>, подсветив критические зоны.</div>
                 </div>
                 <div class="feature-card">
-                    <span class="feature-icon">💎</span>
+                    <span class="feature-icon">&#128142;</span>
                     <div class="feature-title">Снижение стоимости</div>
                     <div class="feature-text">Высокий рейтинг безопасности — аргумент для скидки.</div>
                 </div>
@@ -312,30 +324,30 @@
 
                 <label class="form-label">Площадь</label>
                 <div class="options-grid">
-                    <div class="option-card" onclick="select(this, 'area', 'small')"><span class="card-icon">⛺</span><span class="card-title">< 1 500 м²</span><span class="card-desc">Малое предприятие</span></div>
-                    <div class="option-card" onclick="select(this, 'area', 'medium')"><span class="card-icon">🏢</span><span class="card-title">1.5 - 5 тыс. м²</span><span class="card-desc">Среднее предприятие</span></div>
-                    <div class="option-card" onclick="select(this, 'area', 'large')"><span class="card-icon">🏭</span><span class="card-title">> 5 000 м²</span><span class="card-desc">Большой бизнес</span></div>
+                    <div class="option-card" onclick="select(this, 'area', 'small')"><span class="card-icon">&#9978;</span><span class="card-title">< 1 500 м²</span><span class="card-desc">Малое предприятие</span></div>
+                    <div class="option-card" onclick="select(this, 'area', 'medium')"><span class="card-icon">&#127970;</span><span class="card-title">1.5 - 5 тыс. м²</span><span class="card-desc">Среднее предприятие</span></div>
+                    <div class="option-card" onclick="select(this, 'area', 'large')"><span class="card-icon">&#127981;</span><span class="card-title">> 5 000 м²</span><span class="card-desc">Большой бизнес</span></div>
                 </div>
 
                 <label class="form-label">Год последнего кап. ремонта</label>
                 <div class="options-grid">
-                    <div class="option-card" onclick="select(this, 'repair', 'recent')"><span class="card-icon">🔨</span><span class="card-title">< 10 лет</span><span class="card-desc">Регулярно</span></div>
-                    <div class="option-card" onclick="select(this, 'repair', 'periodic')"><span class="card-icon">🗓️</span><span class="card-title">10 - 25 лет</span><span class="card-desc">Периодически</span></div>
-                    <div class="option-card" onclick="select(this, 'repair', 'old')"><span class="card-icon">🕸️</span><span class="card-title">> 25 лет / Нет</span><span class="card-desc">Давно не было</span></div>
+                    <div class="option-card" onclick="select(this, 'repair', 'recent')"><span class="card-icon">&#128296;</span><span class="card-title">< 10 лет</span><span class="card-desc">Регулярно</span></div>
+                    <div class="option-card" onclick="select(this, 'repair', 'periodic')"><span class="card-icon">&#128467;</span><span class="card-title">10 - 25 лет</span><span class="card-desc">Периодически</span></div>
+                    <div class="option-card" onclick="select(this, 'repair', 'old')"><span class="card-icon">&#128376;</span><span class="card-title">> 25 лет / Нет</span><span class="card-desc">Давно не было</span></div>
                 </div>
 
                 <label class="form-label">Материалы конструкций</label>
                 <div class="options-grid">
-                    <div class="option-card" onclick="select(this, 'material', 'concrete')"><span class="card-icon">🧱</span><span class="card-title">Ж/Б, Кирпич</span><span class="card-desc">Негорючие</span></div>
-                    <div class="option-card" onclick="select(this, 'material', 'metal')"><span class="card-icon">🔩</span><span class="card-title">Металл</span><span class="card-desc">Без огнезащиты</span></div>
-                    <div class="option-card" onclick="select(this, 'material', 'wood')"><span class="card-icon">🪵</span><span class="card-title">Дерево / Панели</span><span class="card-desc">Сгораемые конструкции</span></div>
+                    <div class="option-card" onclick="select(this, 'material', 'concrete')"><span class="card-icon">&#129521;</span><span class="card-title">Ж/Б, Кирпич</span><span class="card-desc">Негорючие</span></div>
+                    <div class="option-card" onclick="select(this, 'material', 'metal')"><span class="card-icon">&#128297;</span><span class="card-title">Металл</span><span class="card-desc">Без огнезащиты</span></div>
+                    <div class="option-card" onclick="select(this, 'material', 'wood')"><span class="card-icon">&#129685;</span><span class="card-title">Дерево / Панели</span><span class="card-desc">Сгораемые конструкции</span></div>
                 </div>
 
                 <label class="form-label">Объемно-планировочные решения <span class="multi-hint">Можно выбрать несколько</span></label>
                 <div class="options-grid">
-                    <div class="option-card" onclick="toggleSelect(this, 'plan', 'many')"><span class="card-icon">🚪</span><span class="card-title">Много помещений</span><span class="card-desc">Кабинетная система</span></div>
-                    <div class="option-card" onclick="toggleSelect(this, 'plan', 'sections')"><span class="card-icon">🧇</span><span class="card-title">Крупная нарезка</span><span class="card-desc">Несколько больших зон</span></div>
-                    <div class="option-card" onclick="toggleSelect(this, 'plan', 'atrium')"><span class="card-icon">🏟️</span><span class="card-title">Единый объем</span><span class="card-desc">Атриум / Без стен</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'plan', 'many')"><span class="card-icon">&#128682;</span><span class="card-title">Много помещений</span><span class="card-desc">Кабинетная система</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'plan', 'sections')"><span class="card-icon">&#129479;</span><span class="card-title">Крупная нарезка</span><span class="card-desc">Несколько больших зон</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'plan', 'atrium')"><span class="card-icon">&#127967;</span><span class="card-title">Единый объем</span><span class="card-desc">Атриум / Без стен</span></div>
                 </div>
 
                 <div class="nav-area"><button class="btn btn-outline" onclick="prevStep(1)">Назад</button><button class="btn btn-primary" onclick="nextStep(3)">Далее</button></div>
@@ -348,26 +360,26 @@
 
                 <label class="form-label">Состояние электропроводки</label>
                 <div class="options-grid">
-                    <div class="option-card" onclick="select(this, 'wiring', 'new')"><span class="card-icon">⚡</span><span class="card-title">Новая (до 30 лет)</span></div>
-                    <div class="option-card" onclick="select(this, 'wiring', 'old')"><span class="card-icon">🕸️</span><span class="card-title">Старая (свыше 30 лет)</span></div>
+                    <div class="option-card" onclick="select(this, 'wiring', 'new')"><span class="card-icon">&#9889;</span><span class="card-title">Новая (до 30 лет)</span></div>
+                    <div class="option-card" onclick="select(this, 'wiring', 'old')"><span class="card-icon">&#128376;</span><span class="card-title">Старая (свыше 30 лет)</span></div>
                 </div>
 
                 <label class="form-label">Замер сопротивления (последние 3 года)</label>
                 <div class="options-grid">
-                    <div class="option-card" onclick="select(this, 'iso_check', 'yes')"><span class="card-icon">✅</span><span class="card-title">Проводился</span><span class="card-desc">Есть акты</span></div>
-                    <div class="option-card" onclick="select(this, 'iso_check', 'no')"><span class="card-icon">❌</span><span class="card-title">Нет / Не знаю</span></div>
+                    <div class="option-card" onclick="select(this, 'iso_check', 'yes')"><span class="card-icon">&#9989;</span><span class="card-title">Проводился</span><span class="card-desc">Есть акты</span></div>
+                    <div class="option-card" onclick="select(this, 'iso_check', 'no')"><span class="card-icon">&#10060;</span><span class="card-title">Нет / Не знаю</span></div>
                 </div>
 
                 <label class="form-label">Молниезащита</label>
                 <div class="options-grid">
-                    <div class="option-card" onclick="select(this, 'lightning', 'yes')"><span class="card-icon">🌩️</span><span class="card-title">Установлена</span></div>
-                    <div class="option-card" onclick="select(this, 'lightning', 'no')"><span class="card-icon">⛔</span><span class="card-title">Отсутствует</span></div>
+                    <div class="option-card" onclick="select(this, 'lightning', 'yes')"><span class="card-icon">&#127785;</span><span class="card-title">Установлена</span></div>
+                    <div class="option-card" onclick="select(this, 'lightning', 'no')"><span class="card-icon">&#9940;</span><span class="card-title">Отсутствует</span></div>
                 </div>
 
                 <label class="form-label">Газоснабжение на объекте</label>
                 <div class="options-grid">
-                    <div class="option-card" onclick="select(this, 'gas', 'no')"><span class="card-icon">🚫</span><span class="card-title">Нет</span></div>
-                    <div class="option-card" onclick="select(this, 'gas', 'yes')"><span class="card-icon">🔥</span><span class="card-title">Есть</span><span class="card-desc">Котельная</span></div>
+                    <div class="option-card" onclick="select(this, 'gas', 'no')"><span class="card-icon">&#128683;</span><span class="card-title">Нет</span></div>
+                    <div class="option-card" onclick="select(this, 'gas', 'yes')"><span class="card-icon">&#128293;</span><span class="card-title">Есть</span><span class="card-desc"></span></div>
                 </div>
 
                 <div class="nav-area"><button class="btn btn-outline" onclick="prevStep(2)">Назад</button><button class="btn btn-primary" onclick="nextStep(4)">Далее</button></div>
@@ -380,25 +392,25 @@
 
                 <label class="form-label">Тип ТМЦ <span class="multi-hint">Можно выбрать несколько</span></label>
                 <div class="options-grid">
-                    <div class="option-card" onclick="toggleSelect(this, 'tmc', 'low')"><span class="card-icon">📦</span><span class="card-title">Негорючие</span><span class="card-desc">Металлы, гипсокартон и др.</span></div>
-                    <div class="option-card" onclick="toggleSelect(this, 'tmc', 'medium')"><span class="card-icon">🛞</span><span class="card-title">Твердые горючие</span><span class="card-desc">Резина, РТИ, смолы</span></div>
-                    <div class="option-card" onclick="toggleSelect(this, 'tmc', 'high')"><span class="card-icon">🧪</span><span class="card-title">Химия / ЛВЖ / ГЖ</span><span class="card-desc">Лаки, краски, масла</span></div>
-                    <div class="option-card" onclick="toggleSelect(this, 'tmc', 'critical')"><span class="card-icon">🧨</span><span class="card-title">Аэрозоли / Газы</span><span class="card-desc">Взрывоопасно</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'tmc', 'low')"><span class="card-icon">&#128230;</span><span class="card-title">Негорючие</span><span class="card-desc">Металлы, гипсокартон и др.</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'tmc', 'medium')"><span class="card-icon">&#128734;</span><span class="card-title">Твердые горючие</span><span class="card-desc">Резина, РТИ, смолы</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'tmc', 'high')"><span class="card-icon">&#129514;</span><span class="card-title">Химия / ЛВЖ / ГЖ</span><span class="card-desc">Лаки, краски, масла</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'tmc', 'critical')"><span class="card-icon">&#129688;</span><span class="card-title">Аэрозоли / Газы</span><span class="card-desc">Взрывоопасно</span></div>
                 </div>
 
                 <label class="form-label">Вид хранения <span class="multi-hint">Можно выбрать несколько</span></label>
                 <div class="options-grid">
-                    <div class="option-card" onclick="toggleSelect(this, 'storage_type', 'floor')"><span class="card-icon">🧱</span><span class="card-title">Напольное</span></div>
-                    <div class="option-card" onclick="toggleSelect(this, 'storage_type', 'rack_low')"><span class="card-icon">🪜</span><span class="card-title">Стеллажи < 5.5м</span></div>
-                    <div class="option-card" onclick="toggleSelect(this, 'storage_type', 'rack_mid')"><span class="card-icon">🏗️</span><span class="card-title">Высотные 5.5 - 12.5м</span><span class="card-desc">Потолок < 14м</span></div>
-                    <div class="option-card" onclick="toggleSelect(this, 'storage_type', 'rack_high')"><span class="card-icon">🏢</span><span class="card-title">Стеллажи > 12.5м</span><span class="card-desc">Или потолок > 14м</span></div>
-                    <div class="option-card" onclick="toggleSelect(this, 'storage_type', 'mezzanine')"><span class="card-icon">📑</span><span class="card-title">Мезонин</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'storage_type', 'floor')"><span class="card-icon">&#129521;</span><span class="card-title">Напольное</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'storage_type', 'rack_low')"><span class="card-icon">&#129692;</span><span class="card-title">Стеллажи < 5.5м</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'storage_type', 'rack_mid')"><span class="card-icon">&#127959;</span><span class="card-title">Высотные 5.5 - 12.5м</span><span class="card-desc">Потолок < 14м</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'storage_type', 'rack_high')"><span class="card-icon">&#127970;</span><span class="card-title">Стеллажи > 12.5м</span><span class="card-desc">Или потолок > 14м</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'storage_type', 'mezzanine')"><span class="card-icon">&#128209;</span><span class="card-title">Мезонин</span></div>
                 </div>
 
                 <label class="form-label">Текущие ремонтные работы</label>
                 <div class="options-grid">
-                    <div class="option-card" onclick="select(this, 'renovation', 'no')"><span class="card-icon">🛑</span><span class="card-title">Не проводятся</span></div>
-                    <div class="option-card" onclick="select(this, 'renovation', 'yes')"><span class="card-icon">👨🏭</span><span class="card-title">Планируются/Идут</span><span class="card-desc">Сварка, резка и т.д.</span></div>
+                    <div class="option-card" onclick="select(this, 'renovation', 'no')"><span class="card-icon">&#128721;</span><span class="card-title">Не проводятся</span></div>
+                    <div class="option-card" onclick="select(this, 'renovation', 'yes')"><span class="card-icon">&#128119;</span><span class="card-title">Планируются/Идут</span><span class="card-desc">Сварка, резка и т.д.</span></div>
                 </div>
 
                 <div class="nav-area"><button class="btn btn-outline" onclick="prevStep(3)">Назад</button><button class="btn btn-primary" onclick="nextStep(5)">Далее</button></div>
@@ -411,34 +423,27 @@
 
                 <label class="form-label">Спринклерная система пожаротушения</label>
                 <div class="options-grid">
-                    <div class="option-card" onclick="select(this, 'sprinkler', 'yes')"><span class="card-icon">🚿</span><span class="card-title">Есть</span><span class="card-desc">Потолочная</span></div>
-                    <div class="option-card" onclick="select(this, 'sprinkler', 'no')"><span class="card-icon">🧯</span><span class="card-title">Нет</span></div>
+                    <div class="option-card" onclick="select(this, 'sprinkler', 'yes')"><span class="card-icon">&#128703;</span><span class="card-title">Есть</span><span class="card-desc">Потолочная</span></div>
+                    <div class="option-card" onclick="select(this, 'sprinkler', 'no')"><span class="card-icon">&#129529;</span><span class="card-title">Нет</span></div>
                 </div>
 
                 <label class="form-label">Пожарная сигнализация (АПС) <span class="multi-hint">Можно несколько</span></label>
                 <div class="options-grid">
-                    <div class="option-card" onclick="toggleSelect(this, 'alarm', 'auto')"><span class="card-icon">🚨</span><span class="card-title">Автоматика</span></div>
-                    <div class="option-card" onclick="toggleSelect(this, 'alarm', 'manual')"><span class="card-icon">🔘</span><span class="card-title">Ручная</span></div>
-                    <div class="option-card" onclick="toggleSelect(this, 'alarm', 'none')"><span class="card-icon">🔕</span><span class="card-title">Отсутствует</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'alarm', 'auto')"><span class="card-icon">&#128680;</span><span class="card-title">Автоматика</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'alarm', 'manual')"><span class="card-icon">&#128280;</span><span class="card-title">Ручная</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'alarm', 'none')"><span class="card-icon">&#128277;</span><span class="card-title">Отсутствует</span></div>
                 </div>
 
                 <label class="form-label">Межстеллажное тушение</label>
                 <div class="options-grid">
-                    <div class="option-card" onclick="select(this, 'in_rack', 'yes')"><span class="card-icon">💦</span><span class="card-title">Есть</span></div>
-                    <div class="option-card" onclick="select(this, 'in_rack', 'no')"><span class="card-icon">❌</span><span class="card-title">Нет</span><span class="card-desc">Только потолочное</span></div>
+                    <div class="option-card" onclick="select(this, 'in_rack', 'yes')"><span class="card-icon">&#128166;</span><span class="card-title">Есть</span></div>
+                    <div class="option-card" onclick="select(this, 'in_rack', 'no')"><span class="card-icon">&#10060;</span><span class="card-title">Нет</span><span class="card-desc">Только потолочное</span></div>
                 </div>
 
                 <label class="form-label">Наружный противопожарный водопровод</label>
                 <div class="options-grid">
-                    <div class="option-card" onclick="select(this, 'ext_water', 'yes')"><span class="card-icon">💧</span><span class="card-title">Есть</span><span class="card-desc">Гидранты / Водоем</span></div>
-                    <div class="option-card" onclick="select(this, 'ext_water', 'no')"><span class="card-icon">🏜️</span><span class="card-title">Нет / Неисправен</span></div>
-                </div>
-
-                <label class="form-label">Противодымная вентиляция</label>
-                <div class="options-grid">
-                    <div class="option-card" onclick="select(this, 'smoke', 'auto')"><span class="card-icon">💨</span><span class="card-title">Автоматика</span></div>
-                    <div class="option-card" onclick="select(this, 'smoke', 'manual')"><span class="card-icon">🖐️</span><span class="card-title">Ручная</span></div>
-                    <div class="option-card" onclick="select(this, 'smoke', 'none')"><span class="card-icon">🌫️</span><span class="card-title">Отсутствует</span></div>
+                    <div class="option-card" onclick="select(this, 'ext_water', 'yes')"><span class="card-icon">&#128167;</span><span class="card-title">Есть</span><span class="card-desc">Гидранты / Водоем</span></div>
+                    <div class="option-card" onclick="select(this, 'ext_water', 'no')"><span class="card-icon">&#127964;</span><span class="card-title">Нет / Неисправен</span></div>
                 </div>
 
                 <div class="nav-area"><button class="btn btn-outline" onclick="prevStep(4)">Назад</button><button class="btn btn-primary" onclick="nextStep(6)">Далее</button></div>
@@ -451,20 +456,20 @@
 
                 <label class="form-label">Расстояние до пожарной части</label>
                 <div class="options-grid">
-                    <div class="option-card" onclick="select(this, 'distance', 'near')"><span class="card-icon">⏱️</span><span class="card-title">< 5 км</span><span class="card-desc">До 10 минут</span></div>
-                    <div class="option-card" onclick="select(this, 'distance', 'far')"><span class="card-icon">🐌</span><span class="card-title">> 5 км</span><span class="card-desc">Долгое ожидание</span></div>
+                    <div class="option-card" onclick="select(this, 'distance', 'near')"><span class="card-icon">&#9201;</span><span class="card-title">< 5 км</span><span class="card-desc">До 10 минут</span></div>
+                    <div class="option-card" onclick="select(this, 'distance', 'far')"><span class="card-icon">&#128012;</span><span class="card-title">> 5 км</span><span class="card-desc">Долгое ожидание</span></div>
                 </div>
 
                 <label class="form-label">Предписания МЧС (ГПН)</label>
                 <div class="options-grid">
-                    <div class="option-card" onclick="select(this, 'mcn', 'no')"><span class="card-icon">👍</span><span class="card-title">Нет / Устранены</span></div>
-                    <div class="option-card" onclick="select(this, 'mcn', 'yes')"><span class="card-icon">⚠️</span><span class="card-title">Есть</span><span class="card-desc">Действующие нарушения</span></div>
+                    <div class="option-card" onclick="select(this, 'mcn', 'no')"><span class="card-icon">&#128077;</span><span class="card-title">Нет / Устранены</span></div>
+                    <div class="option-card" onclick="select(this, 'mcn', 'yes')"><span class="card-icon">&#9888;</span><span class="card-title">Есть</span><span class="card-desc">Действующие нарушения</span></div>
                 </div>
 
                 <label class="form-label">Физическая охрана</label>
                 <div class="options-grid">
-                    <div class="option-card" onclick="select(this, 'guard', 'pro')"><span class="card-icon">👮</span><span class="card-title">ЧОП + Обходы</span></div>
-                    <div class="option-card" onclick="select(this, 'guard', 'camera')"><span class="card-icon">📹</span><span class="card-title">Только камеры</span></div>
+                    <div class="option-card" onclick="select(this, 'guard', 'pro')"><span class="card-icon">&#128110;</span><span class="card-title">ЧОП + Обходы</span></div>
+                    <div class="option-card" onclick="select(this, 'guard', 'camera')"><span class="card-icon">&#128249;</span><span class="card-title">Только камеры</span></div>
                 </div>
 
                 <div class="nav-area"><button class="btn btn-outline" onclick="prevStep(5)">Назад</button><button class="btn btn-primary" onclick="showReport()">Получить отчет</button></div>
@@ -608,9 +613,6 @@
             // Наружная вода
             if (data.ext_water === 'no') html += createItem('danger', 'Водопровод', '🏜️ Нет наружной воды', 'Нет воды / Нет гарантий оперативного тушения.');
 
-            // Дым
-            if (data.smoke === 'none') html += createItem('warning', 'Дымоудаление', '🌫️ Нет дымоудаления', 'Задержка > 5 мин снижает эффективность системы.');
-            if (data.smoke === 'auto') html += createItem('warning', 'Дымоудаление', '💨 Автоматика без задержки', 'Для высотных стеллажей открытие люков без задержки может снизить эффективность спринклеров. Нужна задержка.');
 
             // Сигнализация (Мультивыбор)
             if (data.alarm.includes('none') || (data.alarm.length === 0)) {
@@ -620,7 +622,7 @@
             }
 
             // Надзор и локация
-            if (data.mcn === 'yes') html += createItem('danger', 'Надзор', '⚠️ Предписания МЧС', 'Наличие неустраненных нарушений — стоп-фактор.');
+            if (data.mcn === 'yes') html += createItem('danger', 'Надзор', '⚠️ Предписания МЧС', 'Устранение рекомендаций крайне важно.');
             if (data.distance === 'far') html += createItem('warning', 'Локация', '🐌 Удаленность ПЧ', 'Время прибытия > 10 минут увеличивает ожидаемый убыток.Следует предусмотреть объектовую пожарную охрану.');
 
             if (html === '') html = createItem('safe', 'Итог', '✅ Отличный уровень безопасности', 'Объект соответствует высоким стандартам безопасности.');

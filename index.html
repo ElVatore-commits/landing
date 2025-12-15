@@ -258,13 +258,13 @@
             .expertise-container { grid-template-columns: 1fr; gap: 2rem; }
             .step-content { padding: 1.5rem; }
             
-            /* Исправлено: Навигация вверху теперь видна и адаптирована */
+            /* Навигация вверху для мобильных */
             .nav-area-top { 
-                display: flex; /* Было none */
+                display: flex; 
                 gap: 10px;
             }
             .nav-area-top .btn { 
-                flex: 1; /* Кнопки растягиваются равномерно */
+                flex: 1; 
                 padding: 0.8rem;
                 justify-content: center;
             }
@@ -539,33 +539,6 @@
         };
         let criticalCount = 0;
 
-        // Translation Map for Email
-        const translations = {
-            // General
-            small: "< 1500 м²", medium: "1.5 - 5 тыс. м²", large: "> 5000 м²",
-            recent: "< 10 лет", periodic: "10 - 25 лет", old: "> 25 лет / Нет",
-            concrete: "Ж/Б, Кирпич", metal: "Металл", wood: "Дерево / Панели",
-            many: "Много помещений", sections: "Крупная нарезка", atrium: "Единый объем",
-            
-            // Engineering
-            new: "Новая (< 30 лет)", old: "Старая (> 30 лет)",
-            yes: "Есть/Да", no: "Нет/Нет",
-            
-            // Storage
-            low: "Негорючие", medium: "Твердые горючие", high: "Химия / ЛВЖ / ГЖ", critical: "Аэрозоли / Газы",
-            floor: "Напольное", rack_low: "Стеллажи < 5.5м", rack_mid: "Высотные 5.5-12.5м", rack_high: "Стеллажи > 12.5м", mezzanine: "Мезонин",
-            
-            // Fire Systems
-            auto: "Автоматика", manual: "Ручная", none: "Отсутствует",
-            
-            // Security
-            camera: "Камеры", chop: "ЧОП", button: "Кнопка ГБР", fence: "Огороженная территория",
-            near: "< 5 км", far: "> 5 км",
-            
-            // Regime
-            free: "Свободный доступ", pass: "Пропускная система"
-        };
-
         function startApp() {
             document.getElementById('landing-view').style.display = 'none';
             document.getElementById('audit-app').style.display = 'block';
@@ -618,65 +591,8 @@
         }
 
         function sendEmail() {
-            const getVal = (key) => {
-                if (Array.isArray(data[key])) {
-                    return data[key].map(k => translations[k] || k).join(', ');
-                }
-                return translations[data[key]] || data[key] || "Не указано";
-            };
-
-            const body = `
-Оценка рисков (СОГАЗ Эксперт)
----------------------------
-ОБЪЕКТ:
-ИНН: ${data.inn || '-'}
-ОКВЭД: ${data.okved || '-'}
-Адрес: ${data.address || '-'}
-Год постройки: ${data.buildYear || '-'}
-Площадь: ${getVal('area')}
-Ремонт: ${getVal('repair')}
-Материалы: ${getVal('material')}
-Планировка: ${getVal('plan')}
-
-ИНЖЕНЕРИЯ:
-Электрика: ${getVal('wiring')}
-Замер сопротивления: ${getVal('iso_check')}
-Молниезащита: ${getVal('lightning')}
-Газ: ${getVal('gas')}
-
-ХРАНЕНИЕ:
-ТМЦ: ${getVal('tmc')}
-Вид хранения: ${getVal('storage_type')}
-СМР: ${getVal('renovation')}
-
-СИСТЕМЫ ЗАЩИТЫ:
-АУПТ: ${getVal('sprinkler')}
-АПС: ${getVal('alarm')}
-Межстеллажное тушение: ${getVal('in_rack')}
-Наружный водопровод: ${getVal('ext_water')}
-
-БЕЗОПАСНОСТЬ:
-До ПЧ: ${getVal('distance')}
-Предписания МЧС: ${getVal('mcn')}
-Охрана: ${getVal('guard')}
-Режим: ${getVal('regime')}
-            `;
-
-            // ИСПРАВЛЕНИЕ: Используем создание ссылки для более надежной работы на ПК
-            const mailtoLink = `mailto:LegalEntityEstate@sogaz.ru?subject=Результаты самоосмотра&body=${encodeURIComponent(body)}`;
-            
-            try {
-                const link = document.createElement('a');
-                link.href = mailtoLink;
-                // 'target=_blank' может блокироваться браузерами, '_self' надежнее для mailto
-                link.target = '_self'; 
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            } catch (e) {
-                console.error("Mailto error:", e);
-                window.location.href = mailtoLink;
-            }
+            // ИСПРАВЛЕНИЕ: Убрали всё тело письма. Теперь просто открываем почтовик с адресом и темой.
+            window.location.href = "mailto:LegalEntityEstate@sogaz.ru?subject=Результаты самоосмотра (СОГАЗ Эксперт)";
         }
 
         function showReport() {

@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
+<!DOCTYPE html><html lang="ru"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>СОГАЗ: Оценка рисков (Expert)</title>
@@ -248,21 +246,30 @@
         .result-item.safe { border-color: var(--success); background: #ECFDF5; }
         .badge { display: inline-block; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; padding: 4px 8px; border-radius: 4px; margin-bottom: 0.5rem; color: rgba(0,0,0,0.6); }
 
-        .cta-box { background: linear-gradient(135deg, #E3F2FD 0%, #FFFFFF 100%); padding: 2.5rem; border-radius: 12px; margin-top: 3rem; text-align: center; border: 1px solid #D1E9FF; }
+        .cta-box { background: linear-gradient(135deg, #E3F2FD 0%, #FFFFFF 100%); padding: 2.5rem; border-radius: 12px; margin-top: 3rem; text-align: center; border: 1px solid #D1E9FF; position: relative; z-index: 5; }
         .cta-box.critical { background: linear-gradient(135deg, #FEF2F2 0%, #FFFFFF 100%); border-color: #FCA5A5; }
         .cta-title { margin-top: 0; color: var(--primary); font-size: 1.5rem; font-weight: 800; }
         .cta-box.critical .cta-title { color: var(--danger); }
 
+        /* --- MOBILE ADAPTATION --- */
         @media (max-width: 600px) {
             .hero h1 { font-size: 1.8rem; }
             .features-section { margin-top: -3rem; }
             .expertise-container { grid-template-columns: 1fr; gap: 2rem; }
             .step-content { padding: 1.5rem; }
-            .nav-area-top { display: none; }
+            
+            /* Исправлено: Навигация вверху теперь видна и адаптирована */
+            .nav-area-top { 
+                display: flex; /* Было none */
+                gap: 10px;
+            }
+            .nav-area-top .btn { 
+                flex: 1; /* Кнопки растягиваются равномерно */
+                padding: 0.8rem;
+                justify-content: center;
+            }
         }
-    </style>
-</head>
-<body>
+    </style></head><body>
 
     <header>
         <div class="logo">СОГАЗ</div>
@@ -511,7 +518,7 @@
                 <div id="cta-block" class="cta-box">
                     <h3 id="cta-title" class="cta-title">Детальная консультация</h3>
                     <p id="cta-desc" style="color: var(--text-sec); margin-bottom: 1.5rem;">Для точного расчета тарифа и рекомендаций свяжитесь с нами.</p>
-                    <button class="btn btn-primary" onclick="sendEmail()">Оставить контакты</button>
+                    <button class="btn btn-primary" onclick="sendEmail()" style="cursor: pointer; position: relative; z-index: 10;">Оставить контакты</button>
                 </div>
 
                 <div style="text-align: center; margin-top: 2rem;">
@@ -655,7 +662,21 @@
 Режим: ${getVal('regime')}
             `;
 
-            window.location.href = `mailto:LegalEntityEstate@sogaz.ru?subject=Результаты самоосмотра&body=${encodeURIComponent(body)}`;
+            // ИСПРАВЛЕНИЕ: Используем создание ссылки для более надежной работы на ПК
+            const mailtoLink = `mailto:LegalEntityEstate@sogaz.ru?subject=Результаты самоосмотра&body=${encodeURIComponent(body)}`;
+            
+            try {
+                const link = document.createElement('a');
+                link.href = mailtoLink;
+                // 'target=_blank' может блокироваться браузерами, '_self' надежнее для mailto
+                link.target = '_self'; 
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } catch (e) {
+                console.error("Mailto error:", e);
+                window.location.href = mailtoLink;
+            }
         }
 
         function showReport() {
@@ -745,6 +766,4 @@
                 ctaDesc.innerHTML = "Ваш склад имеет высокий рейтинг безопасности. Свяжитесь с нами для получения спецпредложения.";
             }
         }
-    </script>
-</body>
-</html>
+    </script></body></html>

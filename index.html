@@ -363,7 +363,7 @@
                 <div class="options-grid">
                     <div class="option-card" onclick="select(this, 'material', 'concrete')"><span class="card-icon">🧱</span><span class="card-title">Ж/Б, Кирпич</span><span class="card-desc">Негорючие</span></div>
                     <div class="option-card" onclick="select(this, 'material', 'metal')"><span class="card-icon">🔩</span><span class="card-title">Металл</span><span class="card-desc">Без огнезащиты</span></div>
-                    <div class="option-card" onclick="select(this, 'material', 'wood')"><span class="card-icon">🪵</span><span class="card-title">Дерево / Панели</span><span class="card-desc">Сгораемые конструкции</span></div>
+                    <div class="option-card" onclick="select(this, 'material', 'wood')"><span class="card-icon">🌲</span><span class="card-title">Дерево / Панели</span><span class="card-desc">Сгораемые конструкции</span></div>
                 </div>
 
                 <label class="form-label">Объемно-планировочные решения <span class="multi-hint">Можно выбрать несколько</span></label>
@@ -418,7 +418,7 @@
                 <label class="form-label">Тип ТМЦ <span class="multi-hint">Можно выбрать несколько</span></label>
                 <div class="options-grid">
                     <div class="option-card" onclick="toggleSelect(this, 'tmc', 'low')"><span class="card-icon">🔩</span><span class="card-title">Негорючие</span><span class="card-desc">Металлы, гипсокартон и др.</span></div>
-                    <div class="option-card" onclick="toggleSelect(this, 'tmc', 'medium')"><span class="card-icon">🛞</span><span class="card-title">Твердые горючие</span><span class="card-desc">Резина, РТИ, смолы</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'tmc', 'medium')"><span class="card-icon">📚</span><span class="card-title">Твердые горючие</span><span class="card-desc">Резина, РТИ, смолы</span></div>
                     <div class="option-card" onclick="toggleSelect(this, 'tmc', 'high')"><span class="card-icon">🛢️</span><span class="card-title">Химия / ЛВЖ / ГЖ</span><span class="card-desc">Лаки, краски, масла</span></div>
                     <div class="option-card" onclick="toggleSelect(this, 'tmc', 'critical')"><span class="card-icon">🧨</span><span class="card-title">Аэрозоли / Газы</span><span class="card-desc">Взрывоопасно</span></div>
                 </div>
@@ -426,7 +426,7 @@
                 <label class="form-label">Вид хранения <span class="multi-hint">Можно выбрать несколько</span></label>
                 <div class="options-grid">
                     <div class="option-card" onclick="toggleSelect(this, 'storage_type', 'floor')"><span class="card-icon">📦</span><span class="card-title">Напольное</span><span class="card-desc">В штабелях</span></div>
-                    <div class="option-card" onclick="toggleSelect(this, 'storage_type', 'rack_low')"><span class="card-icon">🪜</span><span class="card-title">Стеллажи < 5.5м</span></div>
+                    <div class="option-card" onclick="toggleSelect(this, 'storage_type', 'rack_low')"><span class="card-icon">📚</span><span class="card-title">Стеллажи < 5.5м</span></div>
                     <div class="option-card" onclick="toggleSelect(this, 'storage_type', 'rack_mid')"><span class="card-icon">🏗️</span><span class="card-title">Высотные 5.5 - 12.5м</span><span class="card-desc">Потолок < 14м</span></div>
                     <div class="option-card" onclick="toggleSelect(this, 'storage_type', 'rack_high')"><span class="card-icon">🏙️</span><span class="card-title">Стеллажи > 12.5м</span><span class="card-desc">Или потолок > 14м</span></div>
                     <div class="option-card" onclick="toggleSelect(this, 'storage_type', 'mezzanine')"><span class="card-icon">🏯</span><span class="card-title">Мезонин</span><span class="card-desc">Многоярусное</span></div>
@@ -634,7 +634,7 @@
                 html += createItem('danger', 'ТМЦ', '🧪 ЛКМ / ЛВЖ / ГЖ', 'Требуется автоматическая система пожаротушения с раствором пенообразователя.');
             }
             if (data.tmc.includes('medium')) {
-                html += createItem('warning', 'ТМЦ', '🛞 Твердые горючие', 'При наличии резины, каучука и смол рекомендуем автоматическое пожаротушение осуществлять водой со смачивателем или пеной низкой кратности.');
+                html += createItem('warning', 'ТМЦ', '🛋️ Твердые горючие', 'При наличии резины, каучука и смол рекомендуем автоматическое пожаротушение осуществлять водой со смачивателем или пеной низкой кратности.');
             }
 
             if (data.storage_type.includes('rack_mid')) {
